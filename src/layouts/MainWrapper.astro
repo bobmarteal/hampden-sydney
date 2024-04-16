@@ -1,0 +1,19 @@
+---
+
+import Head from "./Head.astro";
+import SiteFooter from "./SiteFooter.astro";
+import SiteHeader from "./SiteHeader.astro";
+
+
+---
+
+<html lang="en">
+    <Head></Head>
+    <body>
+        <div class="outer">
+            <SiteHeader></SiteHeader>
+            <slot></slot>
+            <SiteFooter></SiteFooter>
+        </div>
+    </body>
+</html>
