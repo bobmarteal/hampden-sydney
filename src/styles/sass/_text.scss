@@ -2,8 +2,221 @@
 The base stylesheet for all site text styles
 - Set base families
 - Set base sizes
+    16, 20, 24, 28, 30, 36, 42, 60
 - Set base colors
 - Reset headings
 */
-body {
+
+// Roboto Regular
+@font-face {
+  font-display: swap;
+  font-family: "Roboto Regular";
+  font-style: normal;
+  font-weight: 100 1000;
+  src: url("/fonts/Roboto-Regular.woff2") format("woff2");
+}
+
+//Roboto Bold
+@font-face {
+  font-display: swap;
+  font-family: "Roboto Bold";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/Roboto-Bold.woff2") format("woff2");
+}
+
+//DM Serif regular
+@font-face {
+  font-family: "DM Serif Display", serif;
+  font-weight: 400;
+  font-style: normal;
+  src: url("/fonts/DMSerifDisplay-Regular.woff2");
+}
+
+/*
+
+    Map to define each step of fonts up and down. The loops create specific definitions that correspond with the media queries.
+
+*/
+
+$type-scale: (
+  xsmall: (
+    "--2": 0.666rem,
+    "--1": 0.75rem,
+    "-0": 0.75rem,
+    "-1": 1rem,
+    "-2": 1rem,
+    "-3": 1rem,
+    "-4": 1.2rem,
+    "-5": 1.2rem,
+  ),
+  small: (
+    "--2": 0.666rem,
+    "--1": 0.75rem,
+    "-0": 1rem,
+    // 24px
+    "-1": 1.17rem,
+    // 28px
+    "-2": 1.25rem,
+    // 30px
+    "-3": 1.5rem,
+    // 36px
+    "-4": 1.75rem,
+    // 42px
+    "-5": 2.5rem,
+    // 60px
+  ),
+);
+
+/* 
+
+    Create and add font size custom properties to :root 
+    
+*/
+
+:root {
+  --base-font-size: 20px;
+  @include mq(small) {
+    --base-font-size: 24px;
+  }
+  --font-sans: Roboto Regular;
+  --font-serif: DM Serif Display;
+
+  // font size
+  @each $screen-size, $font-size in $type-scale {
+    @if $screen-size == xsmall {
+      @each $size, $value in $font-size {
+        --base#{$size}: #{$value};
+      }
+    } @else if $screen-size == small {
+      @include mq(small) {
+        @each $size, $value in $font-size {
+          --base#{$size}: #{$value};
+        }
+      }
+    } @else if $screen-size == medium {
+      @include mq(medium) {
+        @each $size, $value in $font-size {
+          --base#{$size}: #{$value};
+        }
+      }
+    } @else if $screen-size == large {
+      @include mq(large) {
+        @each $size, $value in $font-size {
+          --base#{$size}: #{$value};
+        }
+      }
+    }
+  }
+}
+
+/* 
+
+    font-size utility classes that correspond ot the variables
+    base--1, base--2, base, base-1, base-2, base-2, base-4
+
+*/
+
+.fs--2 {
+  font-size: var(--base--2);
+}
+.fs--1 {
+  font-size: var(--base--1);
+}
+.fs-0 {
+  font-size: var(--base-0);
+}
+.fs-1 {
+  font-size: var(--base-1);
+}
+.fs-2 {
+  font-size: var(--base-2);
+}
+.fs-3 {
+  font-size: var(--base-3);
+}
+.fs-4 {
+  font-size: var(--base-4);
+}
+.fs-5 {
+  font-size: var(--base-5);
+}
+
+/*
+    Font-weight utility classes
+*/
+
+.fw-100 {
+  font-weight: 100;
+}
+.fw-200 {
+  font-weight: 200;
+}
+.fw-300 {
+  font-weight: 300;
+}
+.fw-400 {
+  font-weight: 400;
+}
+.fw-500 {
+  font-weight: 500;
+}
+.fw-600 {
+  font-weight: 600;
+}
+.fw-700 {
+  font-weight: 700;
+}
+.fw-800 {
+  font-weight: 800;
+}
+.fw-900 {
+  font-weight: 900;
+}
+
+/*
+    Set HTML level styles
+*/
+
+html {
+  font-size: var(--base-font-size);
+  font-family: var(--font-sans);
+}
+
+/*
+    Paragraphs
+*/
+
+p {
+  line-height: 1.4;
+  margin-bottom: 1.5em;
+}
+
+/*
+    Headings
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.1;
+  margin: 0 0 0.75em 0;
+}
+
+/*
+    Font-weights
+*/
+
+/*
+    Font-family
+*/
+
+.sans {
+  font-family: var(--font-sans);
+}
+.serif {
+  font-family: var(--font-serif);
 }

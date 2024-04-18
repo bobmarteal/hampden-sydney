@@ -1,0 +1,87 @@
+---
+import Heading from "../components/Heading.astro";
+import MainWrapper from "../layouts/MainWrapper.astro";
+
+const headings = [
+    {
+        tagName: "h1",
+        size: "h1",
+        text: "Heading 1 sans base-4",
+        classes: "sans fs-4"
+    },
+        
+    {
+        tagName: "h2",
+        size: "h2",
+        text: "Heading 2 sans fs-3",
+        classes: "sans fs-3"
+    },    
+    {
+        tagName: "h3",
+        size: "h4",
+        text: "Heading 3 sans fs-2",
+        classes: "sans fs-2"
+    },    
+    {
+        tagName: "h4",
+        size: "h4",
+        text: "Heading 4 sans fs-1",
+        classes: "sans fs-1"
+    },
+    {
+        tagName: "h1",
+        size: "h1",
+        text: "Heading 1 serif fs-3",
+        classes: "serif fs-3"
+    },
+        
+    {
+        tagName: "h2",
+        size: "h2",
+        text: "Heading 2 serif fs-2",
+        classes: "serif fs-2"
+    },    
+    {
+        tagName: "h3",
+        size: "h4",
+        text: "Heading 3 serif fs-1",
+        classes: "serif fs-1"
+    },    
+    {
+        tagName: "h4",
+        size: "h4",
+        text: "Heading 4 serif fs-0",
+        classes: "serif fs-0"
+    },
+]
+
+---
+
+<MainWrapper>
+
+	<Heading tagName="h1" size="h1" classes="serif fs-4" id="top">Headings</Heading>
+
+    {
+        headings.map(heading => (
+            <Heading 
+                tagName = {heading.tagName}
+                size = {heading.size}
+                classes = {heading.classes}>
+            {heading.text}    
+          
+            </Heading>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid, vel fugiat culpa id esse nesciunt aspernatur, obcaecati rerum repellat consectetur tenetur. Temporibus recusandae iusto qui officia possimus architecto neque ratione fugiat voluptatem veritatis, nobis cumque suscipit dolores voluptatibus rerum consequatur sequi tenetur dignissimos aliquam quae alias.</p>
+        ))
+    }
+    <Heading tagName="h2">Lists</Heading>
+	<ul>
+		<li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, amet!</li>
+		<li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint, sapiente!</li>
+		<li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint, sapiente!</li>
+	</ul>
+	<ul class="nav">
+		<li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, amet!</li>
+		<li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint, sapiente!</li>
+		<li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint, sapiente!</li>
+	</ul>
+</MainWrapper>

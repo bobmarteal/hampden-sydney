@@ -1,0 +1,17 @@
+---
+const {tagName = "h2", classes, size, ...rest } = Astro.props;
+const Tag = tagName;
+
+const headingOptions = {
+    h1: "xxl",
+    h2: "xl",
+    h3: "lg",
+    h4: "md",
+    h5: "sm",
+    h6: "xs"
+};
+
+---
+<Tag class:list={[headingOptions[size], classes]} {...rest}>
+    <slot/>
+</Tag>
