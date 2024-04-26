@@ -10,10 +10,65 @@ import SiteHeader from "./SiteHeader.astro";
 <html lang="en">
     <Head></Head>
     <body>
-        <div class="outer">
-            <SiteHeader></SiteHeader>
-            <slot></slot>
-            <SiteFooter></SiteFooter>
+        <div id="skip-to-nav">
+            <a href="">Main nav</a><a href="">Content</a>
+        </div>
+        <div class="wrapper">
+            <div class="cta-bar full-width">
+                <div class="breakout">
+                    <ul class="ctas">
+                        <li><a href="">Visit</a></li>
+                        <li><a href="">Apply</a></li>
+                        <li><a href="">Give</a></li>
+                    </ul>                       
+                </div>
+             
+            </div>
+            <div class="header-bar full-width">
+                <header class="breakout">
+                    <a href="" class="hsc-logo">Hampden Sydney College</a>
+                    <nav class="header-nav">
+                        <ul class="top-nav">
+                            <li><a href="">Academics</a><button>X</button><ul class="sub-nav">
+                                <li><a href="">some link</a></li>
+                                <li><a href="">another cool page</a></li>
+                                <li><a href="">here we go</a></li>
+                            </ul></li>
+                            <li><a href="">Academic Services</a><button>X</button><ul class="sub-nav">
+                                <li><a href="">some link</a></li>
+                                <li><a href="">another cool page</a></li>
+                                <li><a href="">here we go</a></li>
+                            </ul></li>
+                            <li><a href="">Student Life</a><button>X</button><ul class="sub-nav">
+                                <li><a href="">some link</a></li>
+                                <li><a href="">another cool page</a></li>
+                                <li><a href="">here we go</a></li>
+                            </ul></li>
+                            <li><a href="">Admissions</a><button>X</button><ul class="sub-nav">
+                                <li><a href="">some link</a></li>
+                                <li><a href="">another cool page</a></li>
+                                <li><a href="">here we go</a></li>
+                            </ul></li>
+                            <li><a href="">About HSC</a><button>X</button><ul class="sub-nav">
+                                <li><a href="">some link</a></li>
+                                <li><a href="">another cool page</a></li>
+                                <li><a href="">here we go</a></li>
+                            </ul></li>
+                        </ul>
+                    </nav>
+                </header>
+            </div>
+
+            <!-- <SiteHeader></SiteHeader> -->
+            <main class="">
+                <slot></slot>
+            </main>
+            <!-- <SiteFooter></SiteFooter> -->
+            <div class="footer-bar full-width">
+                <footer class="breakout">
+                    footer stuff
+                </footer>
+            </div>
         </div>
     </body>
 </html>

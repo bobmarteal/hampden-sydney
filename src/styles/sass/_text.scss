@@ -1,6 +1,7 @@
 /*
 The base stylesheet for all site text styles
-- Set base families
+- Set base families with @font-face. Self host Roboto and DM Serif
+    - 
 - Set base sizes
     16, 20, 24, 28, 30, 36, 42, 60
 - Set base colors
@@ -12,8 +13,17 @@ The base stylesheet for all site text styles
   font-display: swap;
   font-family: "Roboto Regular";
   font-style: normal;
-  font-weight: 100 1000;
+  font-weight: 400;
   src: url("/fonts/Roboto-Regular.woff2") format("woff2");
+}
+
+// Roboto Light
+@font-face {
+  font-display: swap;
+  font-family: "Roboto Light";
+  font-style: normal;
+  font-weight: 300;
+  src: url("/fonts/Roboto-Light.woff2") format("woff2");
 }
 
 //Roboto Bold
@@ -76,11 +86,13 @@ $type-scale: (
 
 :root {
   --base-font-size: 20px;
-  @include mq(small) {
+  @include mq(ss-small) {
     --base-font-size: 24px;
   }
-  --font-sans: Roboto Regular;
-  --font-serif: DM Serif Display;
+  --ff-sans-light: Roboto Light;
+  --ff-sans: Roboto Regular;
+  --ff-sans-bold: Roboto Bold;
+  --ff-serif: DM Serif Display;
 
   // font size
   @each $screen-size, $font-size in $type-scale {
@@ -146,32 +158,26 @@ $type-scale: (
     Font-weight utility classes
 */
 
-.fw-100 {
+.fw-light {
   font-weight: 100;
 }
-.fw-200 {
-  font-weight: 200;
-}
-.fw-300 {
-  font-weight: 300;
-}
-.fw-400 {
+.fw-regular {
   font-weight: 400;
 }
-.fw-500 {
-  font-weight: 500;
-}
-.fw-600 {
-  font-weight: 600;
-}
-.fw-700 {
-  font-weight: 700;
-}
-.fw-800 {
+.fw-bold {
   font-weight: 800;
 }
-.fw-900 {
+.fw-black {
   font-weight: 900;
+}
+
+// change font familes for light and bold.
+
+.ff-sans:is(.fw-light) {
+  font-family: var(--ff-sans-light);
+}
+.ff-sans:is(.fw-bold, .fw-black) {
+  font-family: var(--ff-sans-bold);
 }
 
 /*
@@ -180,7 +186,7 @@ $type-scale: (
 
 html {
   font-size: var(--base-font-size);
-  font-family: var(--font-sans);
+  font-family: var(--ff-sans);
 }
 
 /*
@@ -214,9 +220,9 @@ h6 {
     Font-family
 */
 
-.sans {
-  font-family: var(--font-sans);
+.ff-sans {
+  font-family: var(--ff-sans);
 }
-.serif {
-  font-family: var(--font-serif);
+.ff-serif {
+  font-family: var(--ff-serif);
 }

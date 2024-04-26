@@ -2,11 +2,17 @@
 Basic site reset. This isn't crazy and only takes care of the high level stuff.
 */
 
-/* Remove default spacing */
-// * {
-//   margin: 0;
-//   padding: 0;
-// }
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/*  border box  */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 /* text wrap */
 h1,

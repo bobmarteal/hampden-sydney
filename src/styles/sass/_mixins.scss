@@ -1,7 +1,9 @@
 /*
-All mixins are in this file
+  All mixins are in this file
 
-- media queries
+  - set variable $widths to establish all breakpoints
+  - loop over $widths to establish each break point media query
+  - use as @import mq(medium){};
 
 */
 
@@ -17,7 +19,11 @@ $widths: (
   xxl: 1640,
 );
 
-// breakpoint mixin
+/*
+
+  Loop over $widths to build media queries.
+
+*/
 
 @mixin mq($key) {
   $size: map-get($widths, $key);
